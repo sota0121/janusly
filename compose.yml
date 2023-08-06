@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  api:
+    build: .
+    ports:
+      - "8080:8080"
+  redis:
+    image: redis:latest
+  mysql:
+    image: mysql:latest
+    # MySQLの設定を追加
