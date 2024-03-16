@@ -1,9 +1,24 @@
-FROM golang:1.20
+# compose config service.build.context should be '.' that means the root of the project
 
+# syntax=docker/dockerfile:1
+
+# Build stage
+FROM golang:1.20 as builder
 WORKDIR /app
 
-COPY . .
+# Copy go mod and sum files
+# Download dependencies and cache them
+COPY server/go.mod server/go.sum ./
+RUN go mod download
 
-RUN go build -o main ./api/main.go
+# Copy the rest of the files
+COPY server/ ./
 
-CMD ["./main"]
+# Build the application
+RUN make linux-build
+
+# Host stage
+FROM alpine:latest
+COPY --from=builder /app/bin/ /app/bin/
+
+CMD ["/app/bin/server"]
