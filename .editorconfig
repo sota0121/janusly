@@ -1,0 +1,47 @@
+# http://editorconfig.org
+# ref: https://github.com/terraform-docs/terraform-docs/blob/master/.editorconfig
+
+# this file is the top-most editorconfig file
+root = true
+
+# all files
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.go]
+indent_style = tab
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = true
+
+
+[*.{golden,tmpl}]
+trim_trailing_whitespace = false
+insert_final_newline = false
+
+[*.expected]
+trim_trailing_whitespace = false
+insert_final_newline = false
+
+[*.{yaml,yml}]
+indent_size = 2
+
+[*.tf]
+trim_trailing_whitespace = false
+indent_size = 2
+indent_style = tab
+
+[**/inputs-crlf/variables.tf]
+end_of_line = crlf
+
+[**/outputs-crlf/outputs.tf]
+end_of_line = crlf
+
+[Makefile]
+indent_style = tab
