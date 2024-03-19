@@ -17,3 +17,13 @@ rebuild-up:
 down:
 	@echo "Stopping the services using docker compose"
 	docker compose down
+
+.PHONY: watch-log-all
+watch-log-all:
+	@echo "Watching logs for all services"
+	docker compose logs -f
+
+.PHONY: watch-log-api
+watch-log-api:
+	@echo "Watching logs for api-dev service"
+	docker compose logs -f api-dev

@@ -1,11 +1,20 @@
 version: '3.8'
 services:
-  api:
+  api-dev:
     build:
       context: .
       dockerfile: docker/Dockerfile
       labels:
         com.host.description: "Janusly API Server"
+      target: builder
+    volumes:
+      - ./server:/app
+    working_dir: /app
+    # We need to use air to hot reload the server
+    command: ["air", "-c", ".air.toml"]
+    environment:
+      # PORT Number for Gin
+      - PORT=8080
     ports:
       - target: 8080
         published: 8080

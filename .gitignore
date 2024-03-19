@@ -236,6 +236,9 @@ $RECYCLE.BIN/
 
 bin/
 
+# Ignore the air binary
+tmp/
+
 # =========================
 # Terraform
 # see: https://github.com/github/gitignore/blob/main/Terraform.gitignore

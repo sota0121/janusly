@@ -10,5 +10,11 @@ func SetupRouter(r *gin.Engine) *gin.Engine {
 	r.GET("/ping", handler.PingHandler)
 	r.GET("/panic", handler.AlwaysPanicHandler)
 
+	// URL Management
+	urls := r.Group("/urls")
+	{
+		urls.GET("/generate_tiny_url", handler.GenerateTinyURLHandler)
+	}
+
 	return r
 }
