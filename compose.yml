@@ -32,6 +32,8 @@ services:
         published: 8000
         protocol: tcp
         mode: host
+    # use root user to avoid permission issues
+    user: root
     volumes:
       - dynamodb_data:/home/dynamodblocal/data
     working_dir: /home/dynamodblocal
